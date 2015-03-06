@@ -1,1 +1,1 @@
-alrert("This page is working")
+alert("Javascript is working");
