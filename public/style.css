@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+}
+
+h1 {
+  text: 300%;
+  font-family: sans-serif;
+  margin: 50px 0;
+  color: #000000;
+}
+
+body {
+  background: #BADA55;
+}
+
+#content {
+  height: 300px;
+}
+
+.content {
+  color: #ffffff;
+  font-family: sans-serif;
+}
+
+.button {
+  background: #ffffff;
+  display: inline-block;
+  width: 80px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px #ababab solid;
+}
+
+p.button-text {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+}

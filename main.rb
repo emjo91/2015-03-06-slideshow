@@ -10,8 +10,8 @@ get "/" do
   erb :index
 end
 
-get "/slide/:id" do
-  slide = Slide.find(params[:id])
+get "/slide/:slide_order" do
+  slide = Slide.find(params[:slide_order])
   slide_hash = slide.to_hash
   slide_hash.to_json
 end
