@@ -11,5 +11,16 @@ get "/" do
 end
 
 get "/slide/:id" do
-  
+  slide = Slide.find(params[:id])
+  slide_hash = slide.to_hash
+  slide_hash.to_json
+end
+
+### May not need these routes ###
+get "/slide/next" do
+  #slide = Slide.find(1)
+end
+
+get "/slide/previous" do
+  # Code here eventually.
 end

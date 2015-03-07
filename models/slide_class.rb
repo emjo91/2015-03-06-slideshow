@@ -1,7 +1,7 @@
 class Slide
   attr_reader :id
   
-  attr_accessor :title, :body_text, :order
+  attr_accessor :title, :body_text, :slide_order
   
   def initialize(options)
     @id = options["id"]
