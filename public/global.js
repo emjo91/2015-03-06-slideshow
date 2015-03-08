@@ -13,8 +13,9 @@ window.onload = function () {
 
   // This text changes the slide Text
   function next() {
+    current_slide++
     var request = new XMLHttpRequest;
-    request.open("get", "http://localhost:4567/slide/" + current_slide++);
+    request.open("get", "http://localhost:4567/slide/" + current_slide);
     request.send();
     //need to have this wait for the load...
     request.addEventListener("load", function(){
@@ -32,8 +33,9 @@ window.onload = function () {
 
   // This text changes the slide Text
   function previous() {
+    current_slide--
     var request = new XMLHttpRequest;
-    request.open("get", "http://localhost:4567/slide/" + current_slide--);
+    request.open("get", "http://localhost:4567/slide/" + current_slide);
     request.send();
     //need to have this wait for the load...
     request.addEventListener("load", function(){
