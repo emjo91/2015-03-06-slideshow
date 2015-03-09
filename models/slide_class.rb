@@ -58,7 +58,7 @@ class Slide
   
   # This works.
   # This terminate method is working.
-  def terminate
+  def self.terminate
     DATABASE.execute("DROP TABLE slides")
   end
   
