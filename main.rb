@@ -18,6 +18,7 @@ get "/" do
   erb :index
 end
 
+
 get "/slide/:slide_order" do
   slide = Slide.find(params[:slide_order])
   slide_hash = slide.to_hash
@@ -28,12 +29,20 @@ get "/login" do
   erb :login
 end
 
-get "/confirm_login" do
-  # Need to have a check for errors, if there isn't an existing user
-  # If else redirect for if the user exists or not.
-  # IF user exists, redirect to homepage. 
-  # ELSE user does not exist, redirect to login again.
+
+# Not returning correct info, even when the password is infact correct.
+# Y U KEEP RETURNING FALSE?? 
+get "/user_confirm" do
+    @user = User.find_by_username(params[:username])
+    hashed_password = BCrypt::Password.create(@user.password)
+    binding.pry
+    if hashed_password == params[:password]
+      redirect "/"
+    else
+      redirect "/login"
+    end
 end
+
 
 get "/create_user" do
   # This is working for now....
