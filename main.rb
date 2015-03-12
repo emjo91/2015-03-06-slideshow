@@ -36,8 +36,11 @@ get "/confirm_login" do
 end
 
 get "/create_user" do
-  # user = User.create(params)
-  # redirect to homepage.
+  # This is working for now....
+  @user = User.create(params)
+  @user.password = BCrypt::Password.create(params[:password]) 
+  @user.save
+  redirect "/"
 end
 
-binding.pry
+# binding.pry
