@@ -5,6 +5,9 @@ DATABASE.results_as_hash = true
 
 DATABASE.execute("CREATE TABLE IF NOT EXISTS slides(id INTEGER PRIMARY KEY, title TEXT NOT NULL, 
                   body_text TEXT NOT NULL, slide_order INTEGER)")
+                  
+DATABASE.execute("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, username TEXT NOT NULL, 
+                  password TEXT NOT NULL)")
 
 # DATA TO BE ENTERED INTO TABLE
 

@@ -1,6 +1,7 @@
-require 'Gemfile'
+require 'rubygems'
 require 'bundler/setup'
 
+require "bcrypt"
 require "sinatra"
 require "json"
 require "sqlite3"
@@ -10,6 +11,7 @@ require "sinatra/activerecord"
 set :database, {adapter: "sqlite3", database: "slides.db"}
 
 require_relative 'models/slide_class.rb'
+require_relative 'models/user_class.rb'
 require_relative 'database_setup.rb'
 
 get "/" do
@@ -20,6 +22,22 @@ get "/slide/:slide_order" do
   slide = Slide.find(params[:slide_order])
   slide_hash = slide.to_hash
   slide_hash.to_json
+end
+
+get "/login" do
+  erb :login
+end
+
+get "/confirm_login" do
+  # Need to have a check for errors, if there isn't an existing user
+  # If else redirect for if the user exists or not.
+  # IF user exists, redirect to homepage. 
+  # ELSE user does not exist, redirect to login again.
+end
+
+get "/create_user" do
+  # user = User.create(params)
+  # redirect to homepage.
 end
 
 binding.pry
