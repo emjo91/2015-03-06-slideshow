@@ -14,8 +14,13 @@ require_relative 'models/slide_class.rb'
 require_relative 'models/user_class.rb'
 require_relative 'database_setup.rb'
 
+enable  :sessions
 
 get "/" do
+  erb :login
+end
+
+get "/slides" do
   erb :index
 end
 
@@ -26,6 +31,7 @@ get "/slide/:slide_order" do
   slide_hash.to_json
 end
 
+# I think I will use this for new users rather than existing...in the process of changing it.
 get "/login" do
   erb :login
 end
@@ -36,8 +42,11 @@ get "/user_confirm" do
   @user = User.find_by_username(params[:username])
   hashed_password = BCrypt::Password.new(@user.password)
   if hashed_password == params[:password]
-    redirect "/"
+    session[:user_id] = @user.id
+    @message = "welcome #{@user.username}"
+    redirect "/slides"
   else
+    # @error = "Sorry, wrong username or password"
     redirect "/login"
   end
 end
@@ -48,7 +57,8 @@ get "/create_user" do
   @user = User.create(params)
   @user.password = BCrypt::Password.create(params[:password]) 
   @user.save
-  redirect "/"
+  session[:user_id] = @user.id
+  redirect "/slides"
 end
 
 # binding.pry
