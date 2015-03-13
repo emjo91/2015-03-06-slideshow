@@ -21,6 +21,8 @@ get "/" do
 end
 
 get "/slides" do
+  @user = User.find(session[:user_id])
+  @message = "You are logged in as: #{@user.username}"
   erb :index
 end
 
@@ -43,10 +45,10 @@ get "/user_confirm" do
   hashed_password = BCrypt::Password.new(@user.password)
   if hashed_password == params[:password]
     session[:user_id] = @user.id
-    @message = "welcome #{@user.username}"
+    # @message = "welcome #{@user.username}"
     redirect "/slides"
   else
-    # @error = "Sorry, wrong username or password"
+    @error = "Sorry, wrong username or password"
     redirect "/login"
   end
 end
@@ -59,6 +61,13 @@ get "/create_user" do
   @user.save
   session[:user_id] = @user.id
   redirect "/slides"
+end
+
+# Fairly certain this works
+get "/logout" do
+  session[:user_id] = nil
+  @message = "We hope to see you again soon!"
+  redirect "/"
 end
 
 # binding.pry
