@@ -21,6 +21,12 @@ require_relative 'controllers/errors.rb'
 require_relative 'controllers/slides.rb'
 require_relative 'controllers/user_creation.rb'
 
+
+configure :development do
+ set :database, {adapter: "sqlite3", database: "my.db"}
+end
+
+
 enable :sessions
 
 # binding.pry
