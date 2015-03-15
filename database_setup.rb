@@ -3,11 +3,29 @@ require 'sqlite3'
 DATABASE = SQLite3::Database.new("slides.db")
 DATABASE.results_as_hash = true
 
-DATABASE.execute("CREATE TABLE IF NOT EXISTS slides(id INTEGER PRIMARY KEY, title TEXT NOT NULL, 
-                  body_text TEXT NOT NULL, slide_order INTEGER)")
+unless ActiveRecord::Base.connection.table_exists?(:slides)
+ ActiveRecord::Base.connection.create_table :users do |t|
+ t.text :title
+ t.text :body_text
+ t.integer :slide_order
+ end
+end
+
+
+unless ActiveRecord::Base.connection.table_exists?(:users)
+ ActiveRecord::Base.connection.create_table :users do |t|
+ t.text :username
+ t.text :password
+end
+end
+
+# This is the old DB set up
+
+# DATABASE.execute("CREATE TABLE IF NOT EXISTS slides(id INTEGER PRIMARY KEY, title TEXT NOT NULL,
+#                   body_text TEXT NOT NULL, slide_order INTEGER)")
                   
-DATABASE.execute("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, username TEXT NOT NULL, 
-                  password TEXT NOT NULL)")
+# DATABASE.execute("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, username TEXT NOT NULL,
+#                   password TEXT NOT NULL)")
 
 # DATA TO BE ENTERED INTO TABLE
 
