@@ -22,8 +22,23 @@ require_relative 'controllers/slides.rb'
 require_relative 'controllers/user_creation.rb'
 
 
+# Database for development
 configure :development do
- set :database, {adapter: "sqlite3", database: "my.db"}
+ set :database, {adapter: "sqlite3", database: "slides.db"}
+end
+
+
+# Database for production
+configure :production do
+ db = URI.parse(ENV['DATABASE_URL'])
+ ActiveRecord::Base.establish_connection(
+ :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+ :host => db.host,
+ :username => db.user,
+ :password => db.password,
+ :database => db.path[1..-1],
+ :encoding => 'utf8'
+ )
 end
 
 
