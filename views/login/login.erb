@@ -1,22 +1,19 @@
 <center>
   
-  <h3><%= @error %></h3>
-  <h3><%= @message %></h3>
-  
-  <h1>Login</h1>
+  <h1>Slideshow Login</h1>
   <h3>New user?</h3>
-  <form action="/create_user">
+  <form action="/create_user" method="post">
     <p>User Name:</p>
     <input type="text" name="username" id="new-username">
     <p>Password:</p>
     <input type="text" name="password" id="new-password">
     <br><br>
-    <input type="submit">
+    <input type="submit"> 
   </form>
 
   <br><br>
   <h3>Existing User?</h3>
-  <form action="/user_confirm">
+  <form action="/user_confirm" method="post">
     <p>User Name:</p>
     <input type="text" name="username" id="exisitng-username">
     <p>Password:</p>
