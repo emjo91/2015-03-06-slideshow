@@ -1,4 +1,4 @@
-var current_slide = 1;
+var current_slide = 0;
 
 // This doesn't work
 
@@ -16,7 +16,7 @@ window.onload = function () {
   // This text changes the slide Text
   function next() {
     current_slide++
-    if (current_slide >= 10) {
+    if (current_slide > 10) {
       current_slide = 1;
     } else {
       var request = new XMLHttpRequest;
@@ -41,7 +41,7 @@ window.onload = function () {
   function previous() {
     current_slide--
     //would eventually want to make this more dynanimc.
-    if (current_slide <= 1) {
+    if (current_slide < 1) {
       current_slide = 10;
     } else {
       var request = new XMLHttpRequest;
