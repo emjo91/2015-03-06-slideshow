@@ -4,11 +4,16 @@ require 'bundler/setup'
 require "bcrypt"
 require "sinatra"
 require "json"
-require "sqlite3"
+configure :development do
+  require 'sqlite3'
+end
 require 'pry'
 
 require "sinatra/activerecord"
-set :database, {adapter: "sqlite3", database: "slides.db"}
+
+configure :development do
+  set :database, {adapter: "sqlite3", database: "slides.db"}
+end
 
 require_relative 'models/slide_class.rb'
 require_relative 'models/user_class.rb'
@@ -25,6 +30,7 @@ require_relative 'controllers/user_creation.rb'
 # Database for development
 configure :development do
  set :database, {adapter: "sqlite3", database: "slides.db"}
+ set :bind, '0.0.0.0'
 end
 
 

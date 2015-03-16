@@ -1,7 +1,9 @@
 require 'sqlite3'
 
-DATABASE = SQLite3::Database.new("slides.db")
-DATABASE.results_as_hash = true
+configure :development do
+  DATABASE = SQLite3::Database.new("slides.db")
+end
+# DATABASE.results_as_hash = true
 
 unless ActiveRecord::Base.connection.table_exists?(:slides)
  ActiveRecord::Base.connection.create_table :users do |t|
