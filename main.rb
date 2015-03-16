@@ -4,9 +4,9 @@ require 'bundler/setup'
 require "bcrypt"
 require "sinatra"
 require "json"
-# configure :development do
-#   require 'sqlite3'
-# end
+configure :development do
+  require 'sqlite3'
+end
 require 'pry'
 require "sinatra/activerecord"
 
