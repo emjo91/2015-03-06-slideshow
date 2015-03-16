@@ -42,6 +42,8 @@ configure :production do
 end
 
 
-enable :sessions
+configure do
+  enable :sessions
+end
 
 # binding.pry
