@@ -10,7 +10,7 @@ end
 get "/slides" do
   @user = User.find(session[:user_id])
   @message = "Logged in: #{@user.username}"
-  erb :"main_slides/index"
+  erb :"slides/index"
 end
 
 # This grabs the slides

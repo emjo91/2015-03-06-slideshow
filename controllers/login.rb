@@ -1,4 +1,4 @@
-# Main user login page
+# Main user login page #This doesn't actually do anything...
 get "/login" do
   erb :"login/login"
 end
