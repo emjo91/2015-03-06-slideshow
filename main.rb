@@ -4,27 +4,16 @@ require 'bundler/setup'
 require "bcrypt"
 require "sinatra"
 require "json"
-configure :development do
-  require 'sqlite3'
-end
+# configure :development do
+#   require 'sqlite3'
+# end
 require 'pry'
-
 require "sinatra/activerecord"
+
 
 configure :development do
   set :database, {adapter: "sqlite3", database: "slides.db"}
 end
-
-require_relative 'models/slide_class.rb'
-require_relative 'models/user_class.rb'
-require_relative 'database_setup.rb'
-
-# Controllers
-require_relative 'controllers/home.rb'
-require_relative 'controllers/login.rb'
-require_relative 'controllers/errors.rb'
-require_relative 'controllers/slides.rb'
-require_relative 'controllers/user_creation.rb'
 
 
 # Database for development
@@ -46,6 +35,18 @@ configure :production do
  :encoding => 'utf8'
  )
 end
+
+
+require_relative 'models/slide_class.rb'
+require_relative 'models/user_class.rb'
+require_relative 'database_setup.rb'
+
+# Controllers
+require_relative 'controllers/home.rb'
+require_relative 'controllers/login.rb'
+require_relative 'controllers/errors.rb'
+require_relative 'controllers/slides.rb'
+require_relative 'controllers/user_creation.rb'
 
 
 configure do

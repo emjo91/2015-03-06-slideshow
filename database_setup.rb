@@ -1,4 +1,6 @@
-require 'sqlite3'
+# configure :development do
+#   require 'sqlite3'
+# end
 
 configure :development do
   DATABASE = SQLite3::Database.new("slides.db")
